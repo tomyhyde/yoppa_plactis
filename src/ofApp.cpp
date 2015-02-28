@@ -1,61 +1,45 @@
 #include "ofApp.h"
-
+#define HAPPY_NUM 20
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofToggleFullscreen();
     ofSetFrameRate(60);
-    
     ofBackground(0);
-    
-    for(int i =0;i < happys.size(); i++){
+    //soundStream.setup(this, 0, 1, 44100, 2564);
 
-
-    velocity[i].x = ofRandom(-10,10);
-    velocity[i].y = ofRandom(-10, 10);
-    velocity[i].z = ofRandom(-10, 10);
-    }
-    for (int i=0; i<happys.size(); i++){
-        happys.push_back(new WriteHappy());
-        happys.at(i)->setHappyPosition(0,0,0);
-    
-    }
     
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if (happys.size()>20){
+    if (happys.size()>HAPPY_NUM){
     for(int i=0;i<happys.size();i++){
-    happys.at(i)->getHappyPosition() += velocity[i].x;
-    happys.at(i)->getHappyPosition() += velocity[i].y;
-    happys.at(i)->getHappyPosition() += velocity[i].z;
-    
-   
-    
+
+        ofVec3f pt =ofVec3f(velocity[i]);
+  
+    happys.at(i)->setHappyPosition(happys.at(i)->getHappyPosition() + pt);
+ 
+        
     if (happys.at(i)->getHappyPosition().x <0 || happys.at(i)->getHappyPosition().x > ofGetWidth()){
         velocity[i].x *= -1;
+
     }
     if (happys.at(i)->getHappyPosition().y <0 || happys.at(i)->getHappyPosition().y >ofGetHeight()){
-        velocity[i].y *= -1;
+         velocity[i].y *= -1;
+
     }
     if ( happys.at(i)->getHappyPosition().z <-200 || happys.at(i)->getHappyPosition().z >200){
-        velocity[i].z *= -1;
+         velocity[i].z *= -1;
         }
+        ;
     }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
     ofSetColor(255,255,255);
-    if(happys.size()>20){
-      ofSetColor(ofRandom(0,255),
-                 ofRandom(0,255),
-                 ofRandom(0,255));
-    }
-    
     for(int i=0;i <happys.size();i++){
         happys.at(i)->draw();
     
@@ -69,11 +53,15 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key ==' '){
-//        HAPPY_NUM == HAPPY_NUM +1;
+
         happys.push_back(new WriteHappy());
         happys.back()->setHappyPosition(ofRandom(ofGetWidth()),
                                         ofRandom(ofGetHeight()),
                                         ofRandom(-200, 200));
+        
+        velocity[happys.size() - 1].x = ofRandom(-5, 5);
+        velocity[happys.size() - 1].y = ofRandom(-5, 5);
+        velocity[happys.size() - 1].z = ofRandom(-5, 5 );
     }
 
 }

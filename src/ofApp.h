@@ -19,6 +19,7 @@ public:
         return mHappyPosition;
     }
     void draw(){
+        ofSetColor(ofRandom(0,255),ofRandom(0,255),ofRandom(0,255));
         ofDrawBitmapString("HAPPY", getHappyPosition());
     }
     
@@ -40,12 +41,17 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-    
+        //void audioIn(float * input, int bufferSize, int nChannels);
+
+    ofSoundStream soundStream;
+    float curVol;
 //    static const int HAPPY_NUM = 100;
     vector <WriteHappy *> happys;
     
 //    ofVec3f position[HAPPY_NUM];
     ofVec3f velocity[100];
+    
+    
     
     
     
