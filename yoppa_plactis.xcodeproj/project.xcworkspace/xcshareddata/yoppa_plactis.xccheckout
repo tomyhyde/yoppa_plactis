@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AF381B12-7E4C-4B28-8423-74FF37A4C2F8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>yoppa_plactis</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EC5B9D36B999DC4BBC18DA2BA06CD739E886585E</key>
+		<string>https://github.com/tomyhyde/yoppa_plactis.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>yoppa_plactis.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EC5B9D36B999DC4BBC18DA2BA06CD739E886585E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tomyhyde/yoppa_plactis.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EC5B9D36B999DC4BBC18DA2BA06CD739E886585E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC5B9D36B999DC4BBC18DA2BA06CD739E886585E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>yoppa_plactis</string>
+		</dict>
+	</array>
+</dict>
+</plist>

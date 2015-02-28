@@ -4,15 +4,20 @@
 void ofApp::setup(){
     ofToggleFullscreen();
     ofSetFrameRate(60);
-    ofSetCircleResolution(60);
+    
     ofBackground(0);
     
-    for(int i =0;i < CIRCLE_NUM; i++){
-    posX[i] = ofRandom(ofGetWidth());
-    posY[i] = ofRandom(ofGetHeight());
+    for(int i =0;i < happys.size(); i++){
 
-    velocityX[i] = ofRandom(-10,10);
-    velocityY[i] = ofRandom(-10, 10);
+
+    velocity[i].x = ofRandom(-10,10);
+    velocity[i].y = ofRandom(-10, 10);
+    velocity[i].z = ofRandom(-10, 10);
+    }
+    for (int i=0; i<happys.size(); i++){
+        happys.push_back(new WriteHappy());
+        happys.at(i)->setHappyPosition(0,0,0);
+    
     }
     
 
@@ -20,28 +25,42 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(int i=0;i<CIRCLE_NUM;i++){
-    posX[i] += velocityX[i];
-    posY[i] += velocityY[i];
+    if (happys.size()>20){
+    for(int i=0;i<happys.size();i++){
+    happys.at(i)->getHappyPosition() += velocity[i].x;
+    happys.at(i)->getHappyPosition() += velocity[i].y;
+    happys.at(i)->getHappyPosition() += velocity[i].z;
+    
    
     
-    if (posX[i] <0 || posX[i] > ofGetWidth()){
-        velocityX[i] *= -1;
+    if (happys.at(i)->getHappyPosition().x <0 || happys.at(i)->getHappyPosition().x > ofGetWidth()){
+        velocity[i].x *= -1;
     }
-    if (posY[i] <0 || posY[i] >ofGetHeight()){
-        velocityY[i] *= -1;
+    if (happys.at(i)->getHappyPosition().y <0 || happys.at(i)->getHappyPosition().y >ofGetHeight()){
+        velocity[i].y *= -1;
+    }
+    if ( happys.at(i)->getHappyPosition().z <-200 || happys.at(i)->getHappyPosition().z >200){
+        velocity[i].z *= -1;
+        }
     }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255,255,255);
     
-    for(int i=0;i <CIRCLE_NUM;i++){
-    ofCircle(posX[i], posY[i], 20);
+    ofSetColor(255,255,255);
+    if(happys.size()>20){
+      ofSetColor(ofRandom(0,255),
+                 ofRandom(0,255),
+                 ofRandom(0,255));
+    }
+    
+    for(int i=0;i <happys.size();i++){
+        happys.at(i)->draw();
+    
     };
-//    ofCircle(positionX, positionY, 20);
+    
     
     
 
@@ -49,6 +68,13 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    if (key ==' '){
+//        HAPPY_NUM == HAPPY_NUM +1;
+        happys.push_back(new WriteHappy());
+        happys.back()->setHappyPosition(ofRandom(ofGetWidth()),
+                                        ofRandom(ofGetHeight()),
+                                        ofRandom(-200, 200));
+    }
 
 }
 

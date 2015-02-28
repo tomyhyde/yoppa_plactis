@@ -2,6 +2,28 @@
 
 #include "ofMain.h"
 
+class WriteHappy{
+private:
+    ofPoint mHappyPosition = ofPoint(0,0,0);
+public:
+    WriteHappy(){
+    }
+    
+    void setHappyPosition(float x, float y, float z){
+        mHappyPosition.set(x, y, z);
+    }
+    void setHappyPosition(ofPoint position){
+        mHappyPosition = position;
+    }
+    ofPoint getHappyPosition(){
+        return mHappyPosition;
+    }
+    void draw(){
+        ofDrawBitmapString("HAPPY", getHappyPosition());
+    }
+    
+};
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -19,15 +41,12 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    static const int CIRCLE_NUM = 100;
+//    static const int HAPPY_NUM = 100;
+    vector <WriteHappy *> happys;
     
-    float posX[CIRCLE_NUM];
-    float posY[CIRCLE_NUM];
-//    float positionX;
-//    float positionY;
+//    ofVec3f position[HAPPY_NUM];
+    ofVec3f velocity[100];
     
-    float velocityX[CIRCLE_NUM];
-    float velocityY[CIRCLE_NUM];
     
     
 		
