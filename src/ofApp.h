@@ -5,9 +5,12 @@
 class WriteHappy{
 private:
     ofPoint mHappyPosition = ofPoint(0,0,0);
+    ofTrueTypeFont mirano;
+    
 public:
     WriteHappy(){
     }
+    
     
     void setHappyPosition(float x, float y, float z){
         mHappyPosition.set(x, y, z);
@@ -20,7 +23,10 @@ public:
     }
     void draw(){
         ofSetColor(ofRandom(0,255),ofRandom(0,255),ofRandom(0,255));
-        ofDrawBitmapString("HAPPY", getHappyPosition());
+        //ofDrawBitmapString("HAPPY", getHappyPosition());
+        mirano.loadFont("Mirano_regular.ttf",24);
+        mirano.drawString("HAPPY", getHappyPosition().x,getHappyPosition().y);
+        
     }
     
 };
@@ -49,7 +55,7 @@ class ofApp : public ofBaseApp{
     vector <WriteHappy *> happys;
     
 //    ofVec3f position[HAPPY_NUM];
-    ofVec3f velocity[100];
+    ofVec3f velocity[200];
     
     
     
