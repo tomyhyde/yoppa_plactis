@@ -24,7 +24,7 @@ public:
     void draw(){
         ofSetColor(ofRandom(0,255),ofRandom(0,255),ofRandom(0,255));
         //ofDrawBitmapString("HAPPY", getHappyPosition());
-        mirano.loadFont("Mirano_regular.ttf",24);
+        mirano.loadFont("Milano_regular.ttf",24);
         mirano.drawString("HAPPY", getHappyPosition().x,getHappyPosition().y);
         
     }
