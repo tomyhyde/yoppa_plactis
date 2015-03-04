@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofBackground(0);
     //soundStream.setup(this, 0, 1, 44100, 2564);
 
-    
+    milano.loadFont("Milano_regurar.ttf", 24);
 
 }
 
@@ -29,9 +29,9 @@ void ofApp::update(){
          velocity[i].y *= -1;
 
     }
-    if ( happys.at(i)->getHappyPosition().z <-200 || happys.at(i)->getHappyPosition().z >200){
-         velocity[i].z *= -1;
-        }
+//    if ( happys.at(i)->getHappyPosition().z <-200 || happys.at(i)->getHappyPosition().z >200){
+//         velocity[i].z *= -1;
+//        }
         ;
     }
     }
@@ -41,7 +41,7 @@ void ofApp::update(){
 void ofApp::draw(){
     ofSetColor(255,255,255);
     for(int i=0;i <happys.size();i++){
-        happys.at(i)->draw();
+        happys.at(i)->draw(milano);
     
     };
     
@@ -56,12 +56,11 @@ void ofApp::keyPressed(int key){
 
         happys.push_back(new WriteHappy());
         happys.back()->setHappyPosition(ofRandom(ofGetWidth()),
-                                        ofRandom(ofGetHeight()),
-                                        ofRandom(-200, 200));
+                                        ofRandom(ofGetHeight()));
         
         velocity[happys.size() - 1].x = ofRandom(-5, 5);
         velocity[happys.size() - 1].y = ofRandom(-5, 5);
-        velocity[happys.size() - 1].z = ofRandom(-5, 5 );
+        //velocity[happys.size() - 1].z = ofRandom(-5, 5 );
     }
 
 }
