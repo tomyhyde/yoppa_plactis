@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofBackground(0);
     //soundStream.setup(this, 0, 1, 44100, 2564);
 
-    milano.loadFont("Milano_regurar.ttf", 24);
+    milano.loadFont("Milano_regular.ttf", 50);
 
 }
 

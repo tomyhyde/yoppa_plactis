@@ -24,7 +24,7 @@ public:
     void draw(ofTrueTypeFont &milano){
         ofSetColor(ofRandom(0,255),ofRandom(0,255),ofRandom(0,255));
         //ofDrawBitmapString("HAPPY", getHappyPosition());
-        milano.loadFont("Milano_regular.ttf",24);
+        
         milano.drawString("HAPPY", getHappyPosition().x,getHappyPosition().y);
         
     }
