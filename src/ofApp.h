@@ -48,7 +48,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         //void audioIn(float * input, int bufferSize, int nChannels);
-
+    
+    ofSoundPlayer track;
     ofSoundStream soundStream;
     float curVol;
 //    static const int HAPPY_NUM = 100;
@@ -58,6 +59,7 @@ class ofApp : public ofBaseApp{
     ofVec2f velocity[200];
     
     ofTrueTypeFont milano;
+    bool HappyPlay;
     
     
     

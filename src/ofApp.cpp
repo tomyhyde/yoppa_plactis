@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#define HAPPY_NUM 20
+#define HAPPY_NUM 10
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofToggleFullscreen();
@@ -8,6 +8,14 @@ void ofApp::setup(){
     //soundStream.setup(this, 0, 1, 44100, 2564);
 
     milano.loadFont("Milano_regular.ttf", 50);
+    track.loadSound("02 CITY LIGHTS 1.mp3");
+   
+    if (HappyPlay == true) {
+        track.play();
+    }
+    
+    
+    
 
 }
 
@@ -16,7 +24,7 @@ void ofApp::update(){
     if (happys.size()>HAPPY_NUM){
     for(int i=0;i<happys.size();i++){
 
-        ofVec3f pt =ofVec3f(velocity[i]);
+        ofVec2f pt =ofVec2f(velocity[i]);
   
     happys.at(i)->setHappyPosition(happys.at(i)->getHappyPosition() + pt);
  
@@ -29,10 +37,7 @@ void ofApp::update(){
          velocity[i].y *= -1;
 
     }
-//    if ( happys.at(i)->getHappyPosition().z <-200 || happys.at(i)->getHappyPosition().z >200){
-//         velocity[i].z *= -1;
-//        }
-        ;
+    
     }
     }
 }
@@ -42,6 +47,7 @@ void ofApp::draw(){
     ofSetColor(255,255,255);
     for(int i=0;i <happys.size();i++){
         happys.at(i)->draw(milano);
+        
     
     };
     
@@ -58,12 +64,26 @@ void ofApp::keyPressed(int key){
         happys.back()->setHappyPosition(ofRandom(ofGetWidth()),
                                         ofRandom(ofGetHeight()));
         
+        
+            
+        }
+        
         velocity[happys.size() - 1].x = ofRandom(-5, 5);
         velocity[happys.size() - 1].y = ofRandom(-5, 5);
         //velocity[happys.size() - 1].z = ofRandom(-5, 5 );
+    
+    if(happys.size()>HAPPY_NUM){
+        for(int i=0;i<happys.size();i++){
+                HappyPlay = !HappyPlay;
+        }
+    }
+    
+    
+    
     }
 
-}
+
+
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
