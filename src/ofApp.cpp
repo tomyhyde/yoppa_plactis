@@ -5,14 +5,12 @@ void ofApp::setup(){
     ofToggleFullscreen();
     ofSetFrameRate(60);
     ofBackground(0);
-    //soundStream.setup(this, 0, 1, 44100, 2564);
 
     milano.loadFont("Milano_regular.ttf", 50);
     track.loadSound("02 CITY LIGHTS 1.mp3");
    
-    if (HappyPlay == true) {
-        track.play();
-    }
+    
+    
     
     
     
@@ -22,6 +20,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     if (happys.size()>HAPPY_NUM){
+    
+    
+        
     for(int i=0;i<happys.size();i++){
 
         ofVec2f pt =ofVec2f(velocity[i]);
@@ -38,6 +39,13 @@ void ofApp::update(){
 
     }
     
+    
+    
+    if (HappyPlay == true) {
+            track.play();
+    }
+   
+    
     }
     }
 }
@@ -50,6 +58,7 @@ void ofApp::draw(){
         
     
     };
+   
     
     
     
@@ -65,18 +74,19 @@ void ofApp::keyPressed(int key){
                                         ofRandom(ofGetHeight()));
         
         
+        if(happys.size()>HAPPY_NUM){
+            HappyPlay = true;
+            
+        }
             
         }
         
         velocity[happys.size() - 1].x = ofRandom(-5, 5);
         velocity[happys.size() - 1].y = ofRandom(-5, 5);
-        //velocity[happys.size() - 1].z = ofRandom(-5, 5 );
     
-    if(happys.size()>HAPPY_NUM){
-        for(int i=0;i<happys.size();i++){
-                HappyPlay = !HappyPlay;
-        }
-    }
+    
+    
+    
     
     
     
