@@ -49,7 +49,11 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
         
     
-    ofSoundPlayer track;
+    ofSoundPlayer track1;
+    ofSoundPlayer trackBecause;
+    ofSoundPlayer track3;
+    ofVideoPlayer kikocapture;
+    
     
     
 
@@ -61,6 +65,8 @@ class ofApp : public ofBaseApp{
     ofTrueTypeFont milano;
     
     bool HappyPlay;
+    bool BecauseOn;
+    bool KikoPlay;
     
     
     

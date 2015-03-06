@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#define HAPPY_NUM 10
+#define HAPPY_NUM 20
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofToggleFullscreen();
@@ -7,8 +7,10 @@ void ofApp::setup(){
     ofBackground(0);
 
     milano.loadFont("Milano_regular.ttf", 50);
-    track.loadSound("02 CITY LIGHTS 1.mp3");
-   
+    track1.loadSound("happy_edit.mp3");
+    trackBecause.loadSound("because_on.mp3");
+    track3.loadSound("happy_voice.mp3");
+    kikocapture.loadMovie("i_am_kiko_capture.mov");
     
     
     
@@ -19,7 +21,9 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
     if (happys.size()>HAPPY_NUM){
+        
     
     
         
@@ -40,10 +44,23 @@ void ofApp::update(){
     }
     
     
+        
     
+        
     if (HappyPlay == true) {
-            track.play();
+        track1.play();
+        track1.setLoop( true);
+        HappyPlay = false;
     }
+    
+   
+    
+    if (KikoPlay == true) {
+        kikocapture.play();
+        kikocapture.update();
+        }
+    
+        
    
     
     }
@@ -53,6 +70,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetColor(255,255,255);
+    kikocapture.draw(0, 30, 1280, 720);
     for(int i=0;i <happys.size();i++){
         happys.at(i)->draw(milano);
         
@@ -68,24 +86,33 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key ==' '){
+        
+        track3.play();
 
         happys.push_back(new WriteHappy());
         happys.back()->setHappyPosition(ofRandom(ofGetWidth()),
                                         ofRandom(ofGetHeight()));
         
-        
-        if(happys.size()>HAPPY_NUM){
+        if(happys.size() ==HAPPY_NUM){
             HappyPlay = true;
-            
         }
-            
+
+//        if(happys.size() ==HAPPY_NUM){
+//            KikoPlay = true;
+//        }
         }
         
         velocity[happys.size() - 1].x = ofRandom(-5, 5);
         velocity[happys.size() - 1].y = ofRandom(-5, 5);
     
-    
-    
+        if(happys.size() == HAPPY_NUM){
+           BecauseOn = true;
+        }
+        if (BecauseOn == true) {
+           trackBecause.play();
+           BecauseOn = false;
+        }
+
     
     
     
